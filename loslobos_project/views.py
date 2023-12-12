@@ -7,8 +7,8 @@ class IndexPage(TemplateView):
 class NosotrosPage(TemplateView):
     template_name = "nosotros.html"
 
-class TiendaPage(TemplateView):
-    template_name = "tienda.html"
+class ShopPage(TemplateView):
+    template_name = "shop.html"
 
 class ContactoPage(TemplateView):
     template_name = "contacto.html"

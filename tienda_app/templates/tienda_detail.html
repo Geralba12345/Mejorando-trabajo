@@ -1,0 +1,63 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static './css/index.css' %}">
+    <link rel="shortcut icon" href="{% static './media/icons/perro.png' %}" type="image/x-icon">
+    <title>Tienda</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="navbar">
+          <div class="logo"><a href="/"><img src="{% static './media/icons/perro.png' %}" alt="Logo de empresa"></a></div>
+          <ul class="links">
+              <li><a href="{% url 'index' %}">Home</a></li>
+              <li><a href="{% url 'nosotros' %}">Nosotros</a></li>
+              <li><a href="{% url 'shop' %}">Shop</a></li>
+              <li><a href="{% url 'contacto' %}">Contacto</a></li>
+              <li><a href="{% url 'tienda:all' %}">Admin</a></li>
+          </ul>
+          <a href="{% url 'contacto' %}" class="action_btn">Hace tu pedido</a>
+          <div class="toggle_btn">
+              <i class="fa-solid fa-bars"></i>
+          </div>
+      </div>
+      <div class="dropdown_menu">
+          <li><a href="{% url 'index' %}">Home</a></li>
+          <li><a href="{% url 'nosotros' %}">Nosotros</a></li>
+          <li><a href="{% url 'shop' %}">Shop</a></li>
+          <li><a href="{% url 'contacto' %}">Contacto</a></li>
+          <li><a href="{% url 'tienda:all' %}">Admin</a></li>
+          <li><a href="{% url 'contacto' %}" class="action_btn">Hace tu pedido</a></li>
+      </div>
+     </header>
+
+     <main>
+      <section id="hero">
+        <div>
+            <h1>{{tienda.nombre}}</h1>
+            {% for label, value in tienda.get_fields %}
+            <div>
+                <span>{{label | upper }}</span>
+                <span> <b>{{value}}</b></span>
+            </div>
+            {% endfor %}
+            <a href="{% url 'tienda:all'%}">Volver a la lista de tiendas</a>
+        </div>
+      </section>
+    </main>
+    
+
+    <footer>
+    </footer>
+  </body>
+</html>

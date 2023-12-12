@@ -12,8 +12,9 @@
         <ul class="links">
             <li><a href="{% url 'index' %}">Home</a></li>
             <li><a href="{% url 'nosotros' %}">Nosotros</a></li>
-            <li><a href="{% url 'tienda' %}">Tienda</a></li>
+            <li><a href="{% url 'shop' %}">Shop</a></li>
             <li><a href="{% url 'contacto' %}">Contacto</a></li>
+            <li><a href="{% url 'tienda:all' %}">Admin</a></li>
         </ul>
         <a href="{% url 'contacto' %}" class="action_btn">Hace tu pedido</a>
         <div class="toggle_btn">
@@ -23,8 +24,9 @@
     <div class="dropdown_menu">
         <li><a href="{% url 'index' %}">Home</a></li>
         <li><a href="{% url 'nosotros' %}">Nosotros</a></li>
-        <li><a href="{% url 'tienda' %}">Tienda</a></li>
+        <li><a href="{% url 'shop' %}">Shop</a></li>
         <li><a href="{% url 'contacto' %}">Contacto</a></li>
+        <li><a href="{% url 'tienda:all' %}">Admin</a></li>
         <li><a href="{% url 'contacto' %}" class="action_btn">Hace tu pedido</a></li>
     </div>
    </header>

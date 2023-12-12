@@ -81,6 +81,60 @@ function filtrarProductos(categoria) {
   }
 }
 
+const app = new Vue({
+  el: '#app',
+  data: {
+      nombre: '',
+      email: '',
+      comentarioTexto: '',
+      suscripcion: false,
+      comentarios: []
+  },
+  methods: {
+      agregarComentario: function () {
+          if (!this.suscripcion) {
+              alert("Debe aceptar la Cláusula de Contacto para enviar el comentario.");
+              return;
+          }
+
+          this.comentarios.push({
+              nombre: this.nombre,
+              email: this.email,
+              comentario: this.comentarioTexto
+          });
+
+          this.nombre = '';
+          this.email = '';
+          this.comentarioTexto = '';
+          this.suscripcion = false;
+      },
+
+      editarComentario: function (index) {
+          const comentario = this.comentarios[index];
+          if (comentario.idUsuario === this.usuarioActual) {
+              const nuevoTexto = prompt("Edita el comentario:", comentario.comentario);
+              if (nuevoTexto !== null) {
+                  this.comentarios[index].comentario = nuevoTexto;
+              }
+          } else {
+              alert("No puedes editar este comentario, no eres el propietario.");
+          }
+      },
+
+      eliminarComentario: function (index) {
+          const comentario = this.comentarios[index];
+          if (comentario.idUsuario === this.usuarioActual) {
+              const confirmacion = confirm("¿Estás seguro de que quieres eliminar este comentario?");
+              if (confirmacion) {
+                  this.comentarios.splice(index, 1);
+              }
+          } else {
+              alert("No puedes eliminar este comentario, no eres el propietario.");
+          }
+      }
+  }
+});
+
 //formulario
 
 // function agregarComentario() {
